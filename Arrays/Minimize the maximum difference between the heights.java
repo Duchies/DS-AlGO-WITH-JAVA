@@ -3,7 +3,7 @@ import java.lang.*;
 import java.io.*;
 
 /* Name of the class has to be "Main" only if the class is public. */
-public class DP
+public class minDiff
 {
 
 	static int getMinDiff(int[] arr, int n, int k) {
@@ -25,7 +25,7 @@ public class DP
 
 	public static void main (String[] args) 
 	{
-		
+			//https://practice.geeksforgeeks.org/problems/minimize-the-heights3351/1#
 		    // K = 3, N = 5
 			// Arr[] = {3, 9, 12, 16, 20}
 		
