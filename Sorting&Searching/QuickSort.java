@@ -6,7 +6,7 @@ class QuickSort
 
         int pivot = h;
         int i=l-1;
-       for(int j=h;j<=h;j++)
+       for(int j=l;j<=h;j++)
         if(arr[j] <= arr[pivot]) {
             i++;
 
