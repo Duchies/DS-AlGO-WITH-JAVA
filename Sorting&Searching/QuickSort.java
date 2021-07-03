@@ -2,19 +2,23 @@ class QuickSort
 { 
 
     //l -> low , h -> high 
-    public int partition(int l , int h,int[] arr){
+    public int partition(int low , int high,int[] arr){
 
-        int pivot = h;
-        int i=l-1;
-       for(int j=l;j<=h;j++)
-        if(arr[j] <= arr[pivot]) {
+   
+    int pivot = arr[high];
+    int i = (low - 1);
+ 
+    for(int j = low; j <= high - 1; j++)
+    {
+        if (arr[j] < pivot)
+        {
             i++;
-
-            int temp = arr[i];
-            arr[i] = arr[j];
-            arr[j]= temp; 
-        }   
-        return i;
+            swap(arr, i, j);
+        }
+    }
+    swap(arr, i + 1, high);
+    return (i + 1);
+    
     }
 
  //    using recursion with base condition l<h;
@@ -26,6 +30,13 @@ class QuickSort
          sort(l,pivot-1,arr);
          sort(pivot+1,h,arr);
         }
+    }
+    
+        static void swap(int[] arr, int i, int j)
+    {
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
     }
      
    
