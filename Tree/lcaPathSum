@@ -1,0 +1,63 @@
+class Solution {
+    
+    Input: root = [10,5,15,3,7,null,18], low = 7, high = 15
+    Output: 37
+
+    //leetcode tree input style 
+
+    public int lcaPathSum(TreeNode root, int low, int high) {
+        
+        Pair p = dfs(root,low,high);
+        return p.sum;
+        
+    } 
+    
+    static Pair dfs(TreeNode root,int low ,int high){
+        
+        if(root == null){
+            return new Pair();
+        }
+        
+        if(root.val == low || root.val == high){
+            Pair p  = new Pair();
+            p.flag = true;
+            p.sum = root.val;
+            return p;
+        }
+        
+        Pair p1 = new Pair();
+        Pair p2 = new Pair();
+        
+        p1 = dfs(root.left,low,high);
+        p2 = dfs(root.right,low,high);
+        
+        Pair p3 = new Pair();
+         
+        if(p1.flag == true && p2.flag == true ){
+            p3.sum = p1.sum+p2.sum+root.val;
+            p3.flag = true;
+            return p3;
+        }
+        
+        if(p1.flag != false ){
+            p3.flag = true;
+            p3.sum = p1.sum+root.val;
+            return p3;
+        }
+        
+        
+        if(p2.flag != false ){
+            p3.flag = true;
+            p3.sum = p2.sum+root.val;
+            return p3;
+        }
+        
+        return p3;
+        
+    }
+    
+    static class Pair{
+        boolean flag;
+        int sum;
+    }
+}
