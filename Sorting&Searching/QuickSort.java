@@ -66,3 +66,53 @@ class QuickSort
         printArray(arr); 
     } 
 } 
+import java.util.*;
+public class HelloWorld{
+
+     public static void main(String []args){
+        int[] arr = {10,9,8,7,6,4,3,1};
+        quickSort(arr,0,arr.length);
+        System.out.println(Arrays.toString(arr));
+        
+     }
+     
+     static int pivot(int[] arr,int si,int ei){
+         
+         int  p = arr[si] ;
+         int i = si, j = ei;
+         
+         while(i < j){
+             
+            do{
+                i++;
+            }while(i  < ei  && arr[i] <= p);
+            
+            do{
+                j--;
+            }while(j >= si && arr[j] > p);
+             
+             if(i < j)
+             swap(i,j,arr);
+             
+         }
+         
+         swap(si,j,arr);
+         
+         return j;
+     }
+     
+     static void quickSort(int[] arr,int si,int ei){
+        if(si < ei){
+            int idx = pivot(arr,si,ei);
+            
+            quickSort(arr,si,idx);
+            quickSort(arr,idx+1,ei);
+        }
+     }
+     
+     static void swap(int i,int j,int arr[]){
+         int temp = arr[i];
+         arr[i] = arr[j];
+         arr[j] = temp;
+     }
+}
